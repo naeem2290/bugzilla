@@ -1,0 +1,57 @@
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="col-lg-7"><h1>For Reporting Bugs to Recent Projects</h1></div>
+    <div class="col-lg-offset-8"><h1><%=link_to "logout", destroy_user_session_path, method: :delete   %><br></h1></div>
+  </div>
+</div>
+<%= form_for :bug, class: "form-horizontal", url: project_bugs_path,  html: { multipart: true } do |f| %>
+
+  <div class="form-group">
+    <%= f.label :title , class: "col-sm-2 control-label" %>
+    <%= f.text_field :title,  class: "form-control" %>
+  </div>
+
+
+
+  <div class="form-group">
+    <%= f.label :bug_type ,class: "col-sm-2 control-label" %>
+    <%= f.select :bug_type ,  options_for_select(['Bug','Feature']), id: 'type', class: 'form-control'%>
+  </div>
+
+
+
+
+
+  <div  class="form-group" id = "a">
+    <%= f.label :status ,  class:"col-sm-2 control-label" %>
+    <%= f.select :status, options_for_select(['New','Started','Completed']), class: 'form-control'%>
+  </div>
+
+
+
+    <div  class="form-group" id = "b">
+      <%= f.label :status ,  class:"col-sm-2 control-label" %>
+      <%= f.select :status, options_for_select(['New','Started','Resolved']), class: 'form-control'%>
+    </div>
+
+
+  <!-- <div class="form-group" class="resolve " style="visibility: hidden">
+    <%= f.label :status , class:"col-sm-2 control-label" %>
+    <%= f.select :status, options_for_select(['New','Started','Resolved']), class: 'form-control'%>
+  </div> -->
+
+
+
+  <div class="form-group">
+    <%= f.label :screenshot  %>
+    <%= f.file_field :screenshot %>
+  </div>
+
+
+  <%= f.submit 'Save', class: 'btn btn-primary btn-block' %>
+
+<% end %>
+
+
+<h2><%= link_to 'Back', qa_path %></h2>

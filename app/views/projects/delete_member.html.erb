@@ -1,0 +1,21 @@
+<h2>To delete Developer && QA's</h2>
+  <% userArray = []%>
+  <% @userprojects.each do |proj| %>
+    <%options = [] %>
+    <%  user=User.where(id: proj.user_id)  %>
+    <% user.each do |user| %>
+    <% if user.user_type != "Manager"%>
+    <%name=user.email+' ('+user.user_type+')'%>
+      <% options.push name %>
+      <% options.push user.id%> <br>
+        <% userArray.push options %>
+  <%end%>
+  <%end%>
+
+  <% end %>
+
+<%=form_for :UserProject, url: remove_member_project_path  do |f| %>
+  <%= f.select(:user,userArray ,{},{ :multiple => true, :class => 'form-control' }) %>
+  <%= f.submit "Remove"%>
+<%end%>
+<h3><%= link_to 'Back',manager_path %></h3>

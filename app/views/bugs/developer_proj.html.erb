@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="col-lg-7"><h1>Projects</h1></div>
+    <div class="col-lg-offset-8"><h1><%=link_to "logout", destroy_user_session_path, method: :delete   %><br></h1></div>
+  </div>
+</div>
+<% @developer.each do |dev| %>
+  <% if dev!=" "%><br>
+  <table class="table table-bordered table-hover table-dark">
+    <tr>
+
+      <td><h3><%= dev.title%><br></h3></td>
+      <td><h3><%= link_to 'Assign Bugs' , assign_bugs_path(id: dev.id)%></h3></td>
+    <tr>
+    <%end%>
+  </table>
+<%end%>
+<br>
+<h3><%= link_to 'Back', developer_path %><h3>

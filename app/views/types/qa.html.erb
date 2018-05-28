@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="col-lg-7"><h1>Welcome to QA</h1></div>
+    <div class="col-lg-offset-8"><h1><%=link_to "logout", destroy_user_session_path, method: :delete   %><br></h1></div>
+  </div>
+</div>
+<br>
+<br>
+
+<div class= "row">
+  <div class="col-lg-12 ">
+
+    <div class="col-lg-8 ">
+      <% @projects.each do |project| %>
+      <table class="table table-bordered table-hover table-dark">
+        <tr>
+            <td><%= project.title %></td>
+            <td><%= link_to 'Report Bugs' , new_project_bug_path(project) %></td>
+            <td><%= link_to 'Show  Bugs' , project_path(project) %></td>
+        </tr>
+      </table>
+    <% end%>
+    </div>
+  </div>
+</div>

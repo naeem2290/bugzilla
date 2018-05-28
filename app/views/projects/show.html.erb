@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @project.title %></h2>
+<h3>Developers & QA'S</h3>
+<% @userprojects.each do |proj| %>
+  <%  user=User.where(id: proj.user_id)  %>
+
+  <% user.each do |user| %>
+
+  <%= user.email+'('+user.user_type+')' %><br>
+<%end%>
+<% end %>
+
+<h3>Bug Details</h3>
+<table class="table table-bordered table-hover table-dark">
+  <thead class="thead-dark">
+    <tr>
+      <td> Title </td>
+      <td>Type </td>
+      <td> Status </td>
+      <td> Screenshot </td>
+    </tr>
+  </thead>
+  <% @bug.each do |bug| %>
+  <tr>
+    <td><%= bug.title %></td>
+    <td><%= bug.bug_type %></td>
+    <td><%= bug.status %></td>
+    <td><%= bug.screenshot_url.blank? ? 'No image Attached ' : image_tag(bug.screenshot_url) %></td>
+    <td><%= link_to 'Remove Bug' , project_bug_path(id: bug.id, project_id: @project.id) , method: :delete%></td>
+  </tr>
+  <br>
+  </table>
+  <% end %>
+<h3><%= link_to 'Edit', edit_project_path(@project) %> | </h3>
+
+<% if current_user.user_type == 'Manager'%>
+  <h3><%= link_to 'Back',manager_path %></h3>
+<% else%>
+  <h3><%= link_to 'Back',qa_path %></h3>
+<%end%>

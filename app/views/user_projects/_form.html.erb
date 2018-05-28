@@ -1,0 +1,7 @@
+
+<%= form_for :userproject, url: project_user_projects_path, method: 'post' do |f| %> %>
+  <%= f.text_field :name %>
+    <%= f.select :user_type, options_for_select(['Developer','QA']), class: 'form-control'%>
+
+  <%= f.submit %>
+<% end %>

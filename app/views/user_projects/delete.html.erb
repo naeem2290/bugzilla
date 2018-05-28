@@ -1,0 +1,16 @@
+
+<table>
+<tr>
+  <td>
+<% @userproject.each do |proj| %>
+<%= proj.name %></td>
+<td><%= proj.user_type%>
+</td>
+<td>
+  Remove Member
+</td>
+
+<tr>
+<% end %>
+
+</table>

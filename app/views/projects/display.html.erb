@@ -1,0 +1,28 @@
+
+
+
+<div class="row">
+  <div class="col-md-3">
+  <h1><%= @project.title%></h1>
+  </div>
+  <% userArray = []%>
+  <% @user.each do |f| %>
+
+    <%options = [] %>
+    <% if f.user_type != "Manager" %>
+      <%name=f.email+' ('+f.user_type+')'%>
+      <% options.push name%>
+      <% options.push f.user_type %>
+      <%options.push f.id %>
+      <%userArray.push options%>
+    <% end%>
+  <%end %>
+
+
+  <%=form_for :UserProject, url: member_project_path  do |f| %>
+
+    <%= f.select(:user,userArray ,{},{ :multiple => true, :class => 'form-control' }) %>
+    <%= f.submit "ADD"%>
+  <%end%>
+</div
+<h3><%= link_to 'Back',manager_path %></h3>
