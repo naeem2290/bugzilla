@@ -13,8 +13,9 @@ development:
   adapter: postgresql
   encoding: unicode
   database: final_development
-  username: postgres
-  password: postgres
+  host: localhost
+  username: postgress
+  password: postgress
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,12 +24,13 @@ test:
   adapter: postgresql
   encoding: unicode
   database: final_test
-  username: postgres
-  password: postgres
+  host: localhost
+  username: postgress
+  password: postgress
 
 production:
   adapter: postgresql
   encoding: unicode
   database: final_production
-  username: postgres
-  password: postgres
+  username: postgress
+  password: postgress
