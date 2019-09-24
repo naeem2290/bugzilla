@@ -89,7 +89,7 @@ GEM
     devise-bootstrap-views (0.0.11)
     erubi (1.8.0)
     execjs (2.7.0)
-    ffi (1.9.23)
+    ffi (1.11.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (1.6.0)
