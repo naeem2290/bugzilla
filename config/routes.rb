@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :charges, only: [:new, :create]
+  get 'charges/new'
+  get 'charges/create'
   devise_for :users
 
 get 'developer_proj', action: :developer_proj, controller: 'bugs'
